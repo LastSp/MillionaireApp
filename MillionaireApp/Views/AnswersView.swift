@@ -164,15 +164,12 @@ class AnswersView: UIView {
             buttonD.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonD.rightAnchor.constraint(equalTo: stackView.rightAnchor),
 
-            buttonC.bottomAnchor.constraint(equalTo: buttonD.topAnchor, constant: -10),
             buttonC.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonC.rightAnchor.constraint(equalTo: stackView.rightAnchor),
 
-            buttonB.bottomAnchor.constraint(equalTo: buttonC.topAnchor, constant: -10),
             buttonB.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonB.rightAnchor.constraint(equalTo: stackView.rightAnchor),
 
-            buttonA.bottomAnchor.constraint(equalTo: buttonB.topAnchor, constant: -10),
             buttonA.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonA.rightAnchor.constraint(equalTo: stackView.rightAnchor),
             
@@ -234,9 +231,9 @@ class AnswersView: UIView {
         NSLayoutConstraint.activate([
             helpPhoneButton.rightAnchor.constraint(equalTo: stack.rightAnchor),
             helpPhoneButton.heightAnchor.constraint(equalToConstant: 100),
-            helpTeamButton.rightAnchor.constraint(equalTo: helpPhoneButton.leftAnchor, constant: -10),
+//            helpTeamButton.rightAnchor.constraint(equalTo: helpPhoneButton.leftAnchor, constant: -10),
             helpTeamButton.heightAnchor.constraint(equalToConstant: 100),
-            help50Button.rightAnchor.constraint(equalTo: helpTeamButton.leftAnchor, constant: -10),
+//            help50Button.rightAnchor.constraint(equalTo: helpTeamButton.leftAnchor, constant: -10),
             help50Button.heightAnchor.constraint(equalToConstant: 100),
             help50Button.leftAnchor.constraint(equalTo: stack.leftAnchor),
             
