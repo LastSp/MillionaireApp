@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		F53BD637299121030038DC2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD636299121030038DC2E /* AppDelegate.swift */; };
 		F53BD639299121030038DC2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD638299121030038DC2E /* SceneDelegate.swift */; };
-		F53BD63B299121030038DC2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD63A299121030038DC2E /* ViewController.swift */; };
-		F53BD63E299121030038DC2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53BD63C299121030038DC2E /* Main.storyboard */; };
+		F53BD63B299121030038DC2E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD63A299121030038DC2E /* StartViewController.swift */; };
 		F53BD640299121030038DC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F53BD63F299121030038DC2E /* Assets.xcassets */; };
 		F53BD643299121030038DC2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53BD641299121030038DC2E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,8 +18,7 @@
 		F53BD633299121030038DC2E /* MillionaireApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MillionaireApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F53BD636299121030038DC2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F53BD638299121030038DC2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F53BD63A299121030038DC2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F53BD63D299121030038DC2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F53BD63A299121030038DC2E /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		F53BD63F299121030038DC2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F53BD642299121030038DC2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F53BD644299121030038DC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +35,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F50A643729913B2E00871433 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F53BD63A299121030038DC2E /* StartViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F50A643A29913B4600871433 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F53BD62A299121020038DC2E = {
 			isa = PBXGroup;
 			children = (
@@ -58,8 +71,8 @@
 			children = (
 				F53BD636299121030038DC2E /* AppDelegate.swift */,
 				F53BD638299121030038DC2E /* SceneDelegate.swift */,
-				F53BD63A299121030038DC2E /* ViewController.swift */,
-				F53BD63C299121030038DC2E /* Main.storyboard */,
+				F50A643A29913B4600871433 /* Models */,
+				F50A643729913B2E00871433 /* Views */,
 				F53BD63F299121030038DC2E /* Assets.xcassets */,
 				F53BD641299121030038DC2E /* LaunchScreen.storyboard */,
 				F53BD644299121030038DC2E /* Info.plist */,
@@ -127,7 +140,6 @@
 			files = (
 				F53BD643299121030038DC2E /* LaunchScreen.storyboard in Resources */,
 				F53BD640299121030038DC2E /* Assets.xcassets in Resources */,
-				F53BD63E299121030038DC2E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F53BD63B299121030038DC2E /* ViewController.swift in Sources */,
+				F53BD63B299121030038DC2E /* StartViewController.swift in Sources */,
 				F53BD637299121030038DC2E /* AppDelegate.swift in Sources */,
 				F53BD639299121030038DC2E /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +159,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F53BD63C299121030038DC2E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F53BD63D299121030038DC2E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F53BD641299121030038DC2E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +296,6 @@
 				INFOPLIST_FILE = MillionaireApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +323,6 @@
 				INFOPLIST_FILE = MillionaireApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
