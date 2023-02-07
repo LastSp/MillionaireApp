@@ -104,6 +104,7 @@ class AnswersView: UIView {
     
     private func createAnswerButton(letter: String, answer: String) -> UIButton {
         let button = UIButton()
+        button.layer.cornerRadius = 20
         let imageView = UIImageView(image: buttonBackgroundImage)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         button.addSubview(imageView)
@@ -119,7 +120,7 @@ class AnswersView: UIView {
             imageView.topAnchor.constraint(equalTo: button.topAnchor),
             imageView.leftAnchor.constraint(equalTo: button.leftAnchor),
             imageView.rightAnchor.constraint(equalTo: button.rightAnchor, constant: 20),
-            imageView.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: 25),
+            imageView.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: 20),
             
             labelLetter.leftAnchor.constraint(equalTo: button.leftAnchor, constant: 20),
             labelLetter.centerYAnchor.constraint(equalTo: button.centerYAnchor),
@@ -158,12 +159,15 @@ class AnswersView: UIView {
 
             buttonC.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonC.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            buttonC.bottomAnchor.constraint(equalTo: buttonD.topAnchor, constant: -20),
 
             buttonB.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonB.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            buttonB.bottomAnchor.constraint(equalTo: buttonC.topAnchor, constant: -20),
 
             buttonA.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonA.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            buttonA.bottomAnchor.constraint(equalTo: buttonB.topAnchor, constant: -20)
             
             
         ])
@@ -219,17 +223,16 @@ class AnswersView: UIView {
         ])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .equalSpacing
+        stack.distribution = .fillEqually
         stack.alignment = .center
         
         NSLayoutConstraint.activate([
             helpPhoneButton.rightAnchor.constraint(equalTo: stack.rightAnchor),
-            help50Button.widthAnchor.constraint(equalToConstant: 120),
             helpPhoneButton.heightAnchor.constraint(equalToConstant: 100),
-            helpPhoneButton.widthAnchor.constraint(equalToConstant: 120),
             helpTeamButton.heightAnchor.constraint(equalToConstant: 100),
+            helpTeamButton.rightAnchor.constraint(equalTo: helpPhoneButton.leftAnchor, constant: -20),
             help50Button.heightAnchor.constraint(equalToConstant: 100),
-            helpTeamButton.widthAnchor.constraint(equalToConstant: 120),
+            help50Button.rightAnchor.constraint(equalTo: helpTeamButton.leftAnchor, constant: -20),
             help50Button.leftAnchor.constraint(equalTo: stack.leftAnchor),
             
         ])
@@ -270,9 +273,9 @@ class AnswersView: UIView {
             buttonsStackView.topAnchor.constraint(equalTo: questionNumberLabel.bottomAnchor, constant: 40),
             buttonsStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             buttonsStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
-            buttonsStackView.heightAnchor.constraint(equalToConstant: 400),
+            buttonsStackView.heightAnchor.constraint(equalToConstant: 350),
             
-            helpsStackView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: 20),
+            helpsStackView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor),
             helpsStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             helpsStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
             helpsStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)
