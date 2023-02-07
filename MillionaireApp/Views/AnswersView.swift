@@ -1,14 +1,6 @@
 import UIKit
 
 class AnswersView: UIView {
-    private let backgroundImage = UIImage(named: "background")
-    private let logoImage = UIImage(named: "logo")
-    private let buttonBackgroundImage = UIImage(named: "button")
-    private let helpTeamImage = UIImage(named: "helpTeam")
-    private let helpPhoneImage = UIImage(named: "helpPhone")
-    private let help50Image = UIImage(named: "help50")
-    private let leftLine = UIImage(named: "leftLine")
-    private let rightLine = UIImage(named: "rightLine")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -181,60 +173,63 @@ class AnswersView: UIView {
     
     @objc
     private func changeImage(sender: UIButton) {
-        let leftImage = UIImageView(image: leftLine)
-        leftImage.tag = 100
-        let rightImage = UIImageView(image: rightLine)
-        rightImage.tag = 101
-        if let toRemove = sender.viewWithTag(100),
-           let toRemoveRight = sender.viewWithTag(101) {
-            toRemove.removeFromSuperview()
-            toRemoveRight.removeFromSuperview()
+        if sender.tag == tagHelp50 {
+            help50Button.image = noHelp50Image
         }
-        else {
-            sender.addSubview(leftImage)
-            sender.addSubview(rightImage)
+        else if sender.tag == tagHelpTeam {
+            helpTeamButton.image = noHelpTeamImage
         }
-        
+        else if sender.tag == tagHelpPhone {
+            helpPhoneButton.image = noHelpPhoneImage
+        }
     }
     
-    private func createHelpButton(imageView: UIImageView) -> UIButton {
-        let button = UIButton()
-        button.layer.cornerRadius = 60
-        button.addSubview(imageView)
-        button.addTarget(self, action: #selector(changeImage), for: .touchDown)
-        
-        NSLayoutConstraint.activate([
-            imageView.leftAnchor.constraint(equalTo: button.leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: button.rightAnchor),
-            imageView.topAnchor.constraint(equalTo: button.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: button.bottomAnchor)
-        ])
-        
-        self.addSubview(button)
-        return button
-    }
+    private lazy var help50Button: CustomButtonView = {
+        let help50Button = CustomButtonView()
+        help50Button.translatesAutoresizingMaskIntoConstraints = false
+        help50Button.image = help50Image
+        help50Button.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
+        help50Button.button.tag = tagHelp50
+        return help50Button
+    }()
+    
+    private lazy var helpTeamButton: CustomButtonView = {
+        let helpTeamButton = CustomButtonView()
+        helpTeamButton.translatesAutoresizingMaskIntoConstraints = false
+        helpTeamButton.image = helpTeamImage
+        helpTeamButton.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
+        helpTeamButton.button.tag = tagHelpTeam
+        return helpTeamButton
+    }()
+    
+    private lazy var helpPhoneButton: CustomButtonView = {
+        let helpPhoneButton = CustomButtonView()
+        helpPhoneButton.translatesAutoresizingMaskIntoConstraints = false
+        helpPhoneButton.image = helpPhoneImage
+        helpPhoneButton.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
+        helpPhoneButton.button.tag = tagHelpPhone
+        return helpPhoneButton
+    }()
     
     private lazy var helpsStackView: UIStackView = {
-        let help50Button = createHelpButton(imageView: help50ImageView)
-        let helpTeamButton = createHelpButton(imageView: helpTeamImageView)
-        let helpPhoneButton = createHelpButton(imageView: helpPhoneImageView)
         let stack = UIStackView(arrangedSubviews: [
             help50Button,
             helpTeamButton,
-            helpPhoneButton
+            helpPhoneButton,
         ])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .fillEqually
+        stack.distribution = .equalSpacing
         stack.alignment = .center
         
         NSLayoutConstraint.activate([
             helpPhoneButton.rightAnchor.constraint(equalTo: stack.rightAnchor),
+            help50Button.widthAnchor.constraint(equalToConstant: 120),
             helpPhoneButton.heightAnchor.constraint(equalToConstant: 100),
-//            helpTeamButton.rightAnchor.constraint(equalTo: helpPhoneButton.leftAnchor, constant: -10),
+            helpPhoneButton.widthAnchor.constraint(equalToConstant: 120),
             helpTeamButton.heightAnchor.constraint(equalToConstant: 100),
-//            help50Button.rightAnchor.constraint(equalTo: helpTeamButton.leftAnchor, constant: -10),
             help50Button.heightAnchor.constraint(equalToConstant: 100),
+            helpTeamButton.widthAnchor.constraint(equalToConstant: 120),
             help50Button.leftAnchor.constraint(equalTo: stack.leftAnchor),
             
         ])
@@ -284,3 +279,18 @@ class AnswersView: UIView {
         ])
     }
 }
+
+private let backgroundImage = UIImage(named: "background")
+private let logoImage = UIImage(named: "logo")
+private let buttonBackgroundImage = UIImage(named: "button")
+private let helpTeamImage = UIImage(named: "helpTeam")
+private let helpPhoneImage = UIImage(named: "helpPhone")
+private let help50Image = UIImage(named: "help50")
+private let leftLine = UIImage(named: "leftLine")
+private let rightLine = UIImage(named: "rightLine")
+private let noHelp50Image = UIImage(named: "noHelp50")
+private let noHelpTeamImage = UIImage(named: "noHelpTeam")
+private let noHelpPhoneImage = UIImage(named: "noHelpPhone")
+private let tagHelp50: Int = 1
+private let tagHelpTeam: Int = 2
+private let tagHelpPhone: Int = 3
