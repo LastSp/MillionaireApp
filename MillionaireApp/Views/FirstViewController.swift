@@ -8,6 +8,8 @@
 import UIKit
 
 class FirstViewController: UIViewController {
+    
+    let customColor = UIColor(red: 87/255, green: 225/255, blue: 165/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +53,15 @@ class FirstViewController: UIViewController {
     }()
     
     private lazy var button1: UIButton = {
-        let button = UIButton()
-        button.setTitle("Правила игры", for: .normal)
-        button.setTitleColor(UIColor.systemGreen, for: .normal)
-        //button.titleLabel?.font = UIFont(name: "Roboto", size: 32)
+        let button = UIButton(type: .system)
+        
+        let title = "Правила игры"
+        let attributedString = NSMutableAttributedString(string: title)
+        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: title.count))
+        button.setAttributedTitle(attributedString, for: .normal)
+        
+        button.titleLabel?.font =  UIFont(name: "Roboto", size: 32)
+        button.setTitleColor(customColor, for: .normal)
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -62,10 +69,15 @@ class FirstViewController: UIViewController {
     }()
     
     private lazy var button2: UIButton = {
-        let button = UIButton()
-        button.setTitle("Начать игру", for: .normal)
-        button.setTitleColor(UIColor.systemGreen, for: .normal)
-        //button.titleLabel?.font = UIFont(name: "Roboto", size: 32)
+        let button = UIButton(type: .system)
+        
+        let title = "Начать игру"
+        let attributedString = NSMutableAttributedString(string: title)
+        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: title.count))
+        button.setAttributedTitle(attributedString, for: .normal)
+        
+        button.titleLabel?.font =  UIFont(name: "Roboto", size: 32)
+        button.setTitleColor(customColor, for: .normal)
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
