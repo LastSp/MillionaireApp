@@ -9,7 +9,7 @@ import UIKit
 
 class FirstViewController: UIViewController {
     
-    let customColor = UIColor(red: 87/255, green: 225/255, blue: 165/255, alpha: 1)
+    //let customColor = UIColor(red: 87/255, green: 225/255, blue: 165/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class FirstViewController: UIViewController {
         button.setAttributedTitle(attributedString, for: .normal)
         
         button.titleLabel?.font =  UIFont(name: "Roboto", size: 32)
-        button.setTitleColor(customColor, for: .normal)
+        button.setTitleColor(UIColor(named: "buttonTitleColor"), for: .normal)
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class FirstViewController: UIViewController {
         button.setAttributedTitle(attributedString, for: .normal)
         
         button.titleLabel?.font =  UIFont(name: "Roboto", size: 32)
-        button.setTitleColor(customColor, for: .normal)
+        button.setTitleColor(UIColor(named: "buttonTitleColor"), for: .normal)
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
