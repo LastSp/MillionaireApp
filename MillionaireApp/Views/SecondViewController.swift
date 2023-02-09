@@ -42,7 +42,10 @@ class SecondViewController: UIViewController {
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = .white
+        textField.backgroundColor = .clear
+        textField.borderStyle = .roundedRect
+        textField.layer.borderColor = UIColor.white.cgColor
+        textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 10
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
