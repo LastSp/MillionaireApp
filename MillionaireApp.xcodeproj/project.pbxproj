@@ -50,6 +50,7 @@
 			children = (
 				F53BD63A299121030038DC2E /* StartViewController.swift */,
 				11857ED92991649700365F7F /* AnswersViewController.swift */,
+				F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -57,7 +58,7 @@
 		F50A643729913B2E00871433 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F5A77EFA29968F9800303CE4 /* QuestionsModule */,
+				F5A77EFC29968F9800303CE4 /* QuestionTableViewCell.swift */,
 				11857F0029917F5C00365F7F /* AnswersView.swift */,
 				11F37563299277290022E26F /* CustomButtonView.swift */,
 			);
@@ -92,15 +93,6 @@
 				F53BD644299121030038DC2E /* Info.plist */,
 			);
 			path = MillionaireApp;
-			sourceTree = "<group>";
-		};
-		F5A77EFA29968F9800303CE4 /* QuestionsModule */ = {
-			isa = PBXGroup;
-			children = (
-				F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */,
-				F5A77EFC29968F9800303CE4 /* QuestionTableViewCell.swift */,
-			);
-			path = QuestionsModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
