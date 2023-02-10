@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CustomButtonView: UIView {
+class CustomButtonHintView: UIView {
     
     var image: UIImage? = nil {
         willSet {

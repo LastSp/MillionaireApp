@@ -49,10 +49,10 @@ class AnswersView: UIView {
     private lazy var questionTextLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "What year was the year, when first deodorant was invented in our life?"
+        label.text = ""
         label.textColor = .white
-        label.numberOfLines = 5
-        label.contentMode = .left
+        label.numberOfLines = 8
+        label.contentMode = .topLeft
         label.font = label.font.withSize(20)
         self.addSubview(label)
         return label
@@ -82,62 +82,117 @@ class AnswersView: UIView {
         return label
     }()
     
-    private func createLetterLabel(letter: String) -> UILabel {
-        let labelLetter = UILabel()
-        labelLetter.text = letter
-        labelLetter.textColor = .white
-        labelLetter.font = labelLetter.font.withSize(30)
-        labelLetter.translatesAutoresizingMaskIntoConstraints = false
-        labelLetter.contentMode = .left
-        return labelLetter
-    }
-    
-    private func createAnswerLabel(answer: String) -> UILabel {
-        let labelLetter = UILabel()
-        labelLetter.text = answer
-        labelLetter.textColor = .white
-        labelLetter.font = labelLetter.font.withSize(30)
-        labelLetter.translatesAutoresizingMaskIntoConstraints = false
-        labelLetter.contentMode = .right
-        return labelLetter
-    }
-    
-    private func createAnswerButton(letter: String, answer: String) -> UIButton {
-        let button = UIButton()
-        button.layer.cornerRadius = 20
-        let imageView = UIImageView(image: buttonBackgroundImage)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        button.addSubview(imageView)
-        
-        let labelLetter = createLetterLabel(letter: letter)
-        let labelAnswer = createAnswerLabel(answer: answer)
-        
-        button.addSubview(labelLetter)
-        button.addSubview(labelAnswer)
-        
-
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: button.topAnchor),
-            imageView.leftAnchor.constraint(equalTo: button.leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: button.rightAnchor, constant: 20),
-            imageView.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: 20),
-            
-            labelLetter.leftAnchor.constraint(equalTo: button.leftAnchor, constant: 20),
-            labelLetter.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            
-            labelAnswer.rightAnchor.constraint(equalTo: button.rightAnchor, constant: -20),
-            labelAnswer.centerYAnchor.constraint(equalTo: button.centerYAnchor)
-        ])
-
-        self.addSubview(button)
+    private lazy var buttonA: CustomButtonAnswerView = {
+        let button = CustomButtonAnswerView()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundImage = buttonBackgroundImage
+        button.answerText = "1111"
+        button.letterText = "A"
         return button
+    }()
+    
+    private lazy var buttonB: CustomButtonAnswerView = {
+        let button = CustomButtonAnswerView()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundImage = buttonBackgroundImage
+        button.answerText = "2222"
+        button.letterText = "B"
+        return button
+    }()
+    
+    private lazy var buttonC: CustomButtonAnswerView = {
+        let button = CustomButtonAnswerView()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundImage = buttonBackgroundImage
+        button.answerText = "3333"
+        button.letterText = "C"
+        return button
+    }()
+    
+    private lazy var buttonD: CustomButtonAnswerView = {
+        let button = CustomButtonAnswerView()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundImage = buttonBackgroundImage
+        button.answerText = "4444"
+        button.letterText = "D"
+        return button
+    }()
+    
+    func setButtonImage(letter: String, image: UIImage) {
+        if buttonA.labelLetter.text! == letter {
+            buttonA.backgroundImage = image
+        }
+        else if buttonB.labelLetter.text! == letter {
+            buttonB.backgroundImage = image
+        }
+        else if buttonC.labelLetter.text! == letter {
+            buttonC.backgroundImage = image
+        }
+        else if buttonD.labelLetter.text! == letter {
+            buttonD.backgroundImage = image
+        }
+    }
+    
+    func hideTwoButtons(first: String, second: String) {
+        if buttonA.answerText! == first || buttonA.answerText! == second {
+            buttonA.alpha = 0
+        }
+        if buttonB.answerText! == first || buttonB.answerText! == second {
+            buttonB.alpha = 0
+        }
+        if buttonC.answerText! == first || buttonC.answerText! == second {
+            buttonC.alpha = 0
+        }
+        if buttonD.answerText! == first || buttonD.answerText! == second {
+            buttonD.alpha = 0
+        }
+    }
+    
+    func hideHelpButton() {
+        help50Button.isUserInteractionEnabled = false
+        helpPhoneButton.isUserInteractionEnabled = false
+        helpTeamButton.isUserInteractionEnabled = false
+    }
+    
+    func unHideHelpButton() {
+        if help50Button.image != noHelp50Image {
+            help50Button.isUserInteractionEnabled = true
+        }
+        if helpTeamButton.image != noHelpTeamImage {
+            helpTeamButton.isUserInteractionEnabled = true
+        }
+        if helpPhoneButton.image != noHelpPhoneImage {
+            helpPhoneButton.isUserInteractionEnabled = true
+        }
+    }
+    
+    func hideButton(buttons: [CustomButtonAnswerView]) {
+        for button in buttons {
+            if button.alpha != 0 {
+                button.alpha = 0.3
+                button.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    func playerSelectButton(letter: String) {
+        hideHelpButton()
+        if buttonA.labelLetter.text! == letter {
+            hideButton(buttons: [buttonD, buttonB, buttonC])
+        }
+        else if buttonB.labelLetter.text! == letter {
+            hideButton(buttons: [buttonD, buttonA, buttonC])
+        }
+        else if buttonC.labelLetter.text! == letter {
+            hideButton(buttons: [buttonD, buttonB, buttonA])
+            
+        }
+        else if buttonD.labelLetter.text! == letter {
+            hideButton(buttons: [buttonA, buttonB, buttonC])
+        }
     }
     
     private lazy var buttonsStackView: UIStackView = {
-        let buttonA = createAnswerButton(letter: "A", answer: "1956")
-        let buttonB = createAnswerButton(letter: "B", answer: "1912")
-        let buttonC = createAnswerButton(letter: "C", answer: "1942")
-        let buttonD = createAnswerButton(letter: "D", answer: "1930")
         
         let stackView = UIStackView(arrangedSubviews: [
             buttonA,
@@ -150,6 +205,7 @@ class AnswersView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .center
+        stackView.spacing = 20
         self.addSubview(stackView)
         
         NSLayoutConstraint.activate([
@@ -159,15 +215,12 @@ class AnswersView: UIView {
 
             buttonC.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonC.rightAnchor.constraint(equalTo: stackView.rightAnchor),
-            buttonC.bottomAnchor.constraint(equalTo: buttonD.topAnchor, constant: -20),
 
             buttonB.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonB.rightAnchor.constraint(equalTo: stackView.rightAnchor),
-            buttonB.bottomAnchor.constraint(equalTo: buttonC.topAnchor, constant: -20),
 
             buttonA.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             buttonA.rightAnchor.constraint(equalTo: stackView.rightAnchor),
-            buttonA.bottomAnchor.constraint(equalTo: buttonB.topAnchor, constant: -20)
             
             
         ])
@@ -175,21 +228,31 @@ class AnswersView: UIView {
         return stackView
     }()
     
+    var hintHelp50Completion: ((String) -> ())?
+    var hintHelpTeamCompletion: ((String) -> ())?
+    var hintHelpPhoneCompletion: ((String) -> ())?
+    
     @objc
     private func changeImage(sender: UIButton) {
         if sender.tag == tagHelp50 {
             help50Button.image = noHelp50Image
+            help50Button.isUserInteractionEnabled = false
+            hintHelp50Completion?("help50")
         }
         else if sender.tag == tagHelpTeam {
             helpTeamButton.image = noHelpTeamImage
+            helpTeamButton.isUserInteractionEnabled = false
+            hintHelpTeamCompletion?("helpTeam")
         }
         else if sender.tag == tagHelpPhone {
             helpPhoneButton.image = noHelpPhoneImage
+            helpPhoneButton.isUserInteractionEnabled = false
+            hintHelpPhoneCompletion?("helpPhone")
         }
     }
     
-    private lazy var help50Button: CustomButtonView = {
-        let help50Button = CustomButtonView()
+    private lazy var help50Button: CustomButtonHintView = {
+        let help50Button = CustomButtonHintView()
         help50Button.translatesAutoresizingMaskIntoConstraints = false
         help50Button.image = help50Image
         help50Button.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
@@ -197,8 +260,8 @@ class AnswersView: UIView {
         return help50Button
     }()
     
-    private lazy var helpTeamButton: CustomButtonView = {
-        let helpTeamButton = CustomButtonView()
+    private lazy var helpTeamButton: CustomButtonHintView = {
+        let helpTeamButton = CustomButtonHintView()
         helpTeamButton.translatesAutoresizingMaskIntoConstraints = false
         helpTeamButton.image = helpTeamImage
         helpTeamButton.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
@@ -206,8 +269,8 @@ class AnswersView: UIView {
         return helpTeamButton
     }()
     
-    private lazy var helpPhoneButton: CustomButtonView = {
-        let helpPhoneButton = CustomButtonView()
+    private lazy var helpPhoneButton: CustomButtonHintView = {
+        let helpPhoneButton = CustomButtonHintView()
         helpPhoneButton.translatesAutoresizingMaskIntoConstraints = false
         helpPhoneButton.image = helpPhoneImage
         helpPhoneButton.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
@@ -225,14 +288,13 @@ class AnswersView: UIView {
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         stack.alignment = .center
+        stack.spacing = 20
         
         NSLayoutConstraint.activate([
             helpPhoneButton.rightAnchor.constraint(equalTo: stack.rightAnchor),
             helpPhoneButton.heightAnchor.constraint(equalToConstant: 100),
             helpTeamButton.heightAnchor.constraint(equalToConstant: 100),
-            helpTeamButton.rightAnchor.constraint(equalTo: helpPhoneButton.leftAnchor, constant: -20),
             help50Button.heightAnchor.constraint(equalToConstant: 100),
-            help50Button.rightAnchor.constraint(equalTo: helpTeamButton.leftAnchor, constant: -20),
             help50Button.leftAnchor.constraint(equalTo: stack.leftAnchor),
             
         ])
@@ -240,6 +302,47 @@ class AnswersView: UIView {
         self.addSubview(stack)
         return stack
     }()
+    
+    func reloadAllButtons() {
+        buttonA.isUserInteractionEnabled = true
+        buttonB.isUserInteractionEnabled = true
+        buttonC.isUserInteractionEnabled = true
+        buttonD.isUserInteractionEnabled = true
+        
+        
+        buttonA.alpha = 1
+        buttonB.alpha = 1
+        buttonC.alpha = 1
+        buttonD.alpha = 1
+        
+        buttonA.backgroundImage = nil
+        buttonB.backgroundImage = nil
+        buttonC.backgroundImage = nil
+        buttonD.backgroundImage = nil
+        buttonD.backgroundImage = nil
+        
+        unHideHelpButton()
+        
+    }
+    
+    func setQuestions(title: String, answers: [String], price: Int, number: Int,
+                      answerButtonCompletion: @escaping (String, String) -> (),
+                      hintButtonCompletion: @escaping (String) -> ()) {
+        self.questionTextLabel.text = title
+        self.buttonA.answerText = answers[0]
+        self.buttonB.answerText = answers[1]
+        self.buttonC.answerText = answers[2]
+        self.buttonD.answerText = answers[3]
+        self.questionPriceLabel.text = "\(String(price)) RUB"
+        self.questionNumberLabel.text = "Question \(number)"
+        self.buttonA.checkAnsCompletion = answerButtonCompletion
+        self.buttonB.checkAnsCompletion = answerButtonCompletion
+        self.buttonC.checkAnsCompletion = answerButtonCompletion
+        self.buttonD.checkAnsCompletion = answerButtonCompletion
+        self.hintHelp50Completion = hintButtonCompletion
+        self.hintHelpTeamCompletion = hintButtonCompletion
+        self.hintHelpPhoneCompletion = hintButtonCompletion
+    }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -256,10 +359,10 @@ class AnswersView: UIView {
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
 
 
-            questionTextLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 39),
+            questionTextLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             questionTextLabel.leftAnchor.constraint(equalTo: logoImageView.rightAnchor, constant: 10),
             questionTextLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
-            questionTextLabel.heightAnchor.constraint(equalToConstant: 100),
+            questionTextLabel.heightAnchor.constraint(equalToConstant: 150),
 
 
             questionNumberLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
@@ -284,8 +387,10 @@ class AnswersView: UIView {
 }
 
 private let backgroundImage = UIImage(named: "background")
+private let trueBackgroundImage = UIImage(named: "true_background")
+private let falseBackgroundImage = UIImage(named: "false_background")
 private let logoImage = UIImage(named: "logo")
-private let buttonBackgroundImage = UIImage(named: "button")
+private let buttonBackgroundImage = UIImage(named: "normal_background")
 private let helpTeamImage = UIImage(named: "helpTeam")
 private let helpPhoneImage = UIImage(named: "helpPhone")
 private let help50Image = UIImage(named: "help50")
