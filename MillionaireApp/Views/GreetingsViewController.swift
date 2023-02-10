@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwiftUI
 
-class FirstViewController: UIViewController {
+class GreetingsViewController: UIViewController {
     
     //let customColor = UIColor(red: 87/255, green: 225/255, blue: 165/255, alpha: 1)
 
@@ -123,6 +124,22 @@ class FirstViewController: UIViewController {
         
     }
 
+}
+
+struct MyProvider1: PreviewProvider {
+    static var previews: some View {
+        ContainerView().edgesIgnoringSafeArea(.all)
+    }
+    
+    struct ContainerView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> some UIViewController {
+            return GreetingsViewController()
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+            
+        }
+    }
 }
 
 
