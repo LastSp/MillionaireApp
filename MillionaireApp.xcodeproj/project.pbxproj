@@ -17,6 +17,9 @@
 		F53BD643299121030038DC2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53BD641299121030038DC2E /* LaunchScreen.storyboard */; };
 		F5A77EFD29968F9800303CE4 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */; };
 		F5A77EFE29968F9800303CE4 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77EFC29968F9800303CE4 /* QuestionTableViewCell.swift */; };
+		F5A77F012996915A00303CE4 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77EFF2996915A00303CE4 /* SecondViewController.swift */; };
+		F5A77F022996915A00303CE4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77F002996915A00303CE4 /* FirstViewController.swift */; };
+		F5A77F04299691DC00303CE4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77F03299691DC00303CE4 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		F53BD644299121030038DC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		F5A77EFC29968F9800303CE4 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		F5A77EFF2996915A00303CE4 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = MillionaireApp/Views/SecondViewController.swift; sourceTree = SOURCE_ROOT; };
+		F5A77F002996915A00303CE4 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = MillionaireApp/Views/FirstViewController.swift; sourceTree = SOURCE_ROOT; };
+		F5A77F03299691DC00303CE4 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = MillionaireApp/Views/ResultViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +56,10 @@
 			children = (
 				F53BD63A299121030038DC2E /* StartViewController.swift */,
 				11857ED92991649700365F7F /* AnswersViewController.swift */,
+				F5A77F002996915A00303CE4 /* FirstViewController.swift */,
+				F5A77EFF2996915A00303CE4 /* SecondViewController.swift */,
 				F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */,
+				F5A77F03299691DC00303CE4 /* ResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -168,11 +177,14 @@
 				11857EDA2991649700365F7F /* AnswersViewController.swift in Sources */,
 				F5A77EFE29968F9800303CE4 /* QuestionTableViewCell.swift in Sources */,
 				F5A77EFD29968F9800303CE4 /* QuestionsViewController.swift in Sources */,
+				F5A77F012996915A00303CE4 /* SecondViewController.swift in Sources */,
 				F53BD63B299121030038DC2E /* StartViewController.swift in Sources */,
+				F5A77F022996915A00303CE4 /* FirstViewController.swift in Sources */,
 				F53BD637299121030038DC2E /* AppDelegate.swift in Sources */,
 				11F37564299277290022E26F /* CustomButtonView.swift in Sources */,
 				F53BD639299121030038DC2E /* SceneDelegate.swift in Sources */,
 				11857F0129917F5C00365F7F /* AnswersView.swift in Sources */,
+				F5A77F04299691DC00303CE4 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
