@@ -12,15 +12,19 @@ import UIKit
 class QuestionsViewController: UIViewController {
     
     var currentNickname: String? = nil
+    var currentSum: Int = 0
     var questions = QuestionModel().getAllQuestions()
     var curentIndexPath: Int = 1
+    var current50 = false
+    var currentPhone = false
+    var currentTeam = false
     var currentNumberQuestion: Int = 1 {
         willSet {
-            updateBackgroundCell(currentIndex: newValue, userIsTrue: trueAns!)
+            updateBackgroundCell(currentIndex: newValue, userIsTrue: trueAns)
             goToNextQuestion()
         }
     }
-    var trueAns: Bool? = nil
+    var trueAns: Bool = true
 
     //MARK: - Properties
     private let tableView: UITableView = {
@@ -39,14 +43,41 @@ class QuestionsViewController: UIViewController {
     }()
     
     func goToNextQuestion() {
-        Timer.scheduledTimer(withTimeInterval: 5,
+        Timer.scheduledTimer(withTimeInterval: 4,
                                      repeats: false, block: {[self] _ in
-            let answerVC = AnswersViewController()
-            answerVC.currentNickname = currentNickname
-            answerVC.modalPresentationStyle = .fullScreen
-            answerVC.questionViewController = self
-            answerVC.currentNumberQuestion = currentNumberQuestion
-            self.present(answerVC, animated: true)
+            if trueAns {
+                if currentNumberQuestion == 16 {
+                    let resultVC = ResultViewController(result: true, numberOfAttempts: currentNumberQuestion - 1, finalSum: 1_000_000)
+                    currentNumberQuestion = 1
+                    resultVC.modalPresentationStyle = .fullScreen
+                    self.present(resultVC, animated: true)
+                }
+                let answerVC = AnswersViewController()
+                answerVC.currentNickname = currentNickname
+                answerVC.modalPresentationStyle = .fullScreen
+                answerVC.questionViewController = self
+                answerVC.currentTeam = self.currentTeam
+                answerVC.current50 = self.current50
+                answerVC.currentPhone = self.currentPhone
+                answerVC.currentSum = self.currentSum
+                answerVC.currentNumberQuestion = self.currentNumberQuestion
+                self.present(answerVC, animated: true)
+            }
+            else {
+                if currentSum >= 1_000 && currentSum < 32_000  {
+                    currentSum = 1_000
+                }
+                else if currentSum >= 32_000 {
+                    currentSum = 32_000
+                }
+                else {
+                    currentSum = 0
+                }
+                let resultVC = ResultViewController(result: false, numberOfAttempts: currentNumberQuestion - 1, finalSum: currentSum)
+                resultVC.modalPresentationStyle = .fullScreen
+                self.present(resultVC, animated: true)
+            }
+            
         })
     }
     

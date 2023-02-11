@@ -40,6 +40,19 @@ struct GameModel {
             self.totalFireProofSum = totalFireProofSum
             self.fireProofSums = fireProofSums
         }
+        
+        mutating func setTotalPrice(price: Int) {
+            self.totalSum = price
+            for sum in self.fireProofSums {
+                if price == sum {
+                    self.totalFireProofSum = sum
+                }
+            }
+        }
+        
+        func getTotalFireProofSum() -> Int {
+            return self.totalFireProofSum
+        }
 
     }
     

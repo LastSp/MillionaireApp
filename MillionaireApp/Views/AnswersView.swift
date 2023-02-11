@@ -2,9 +2,55 @@ import UIKit
 
 class AnswersView: UIView {
     
+    var time: Int = 30 {
+        willSet {
+            timerLabel.text = "\(time)"
+        }
+    }
+    
+    var timer = Timer()
+    
+    
+    
+    private lazy var timerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "\(time)"
+        label.font = .systemFont(ofSize: 24)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(label)
+        return label
+    }()
+    
+    var currentHelp50: Bool = true {
+        willSet {
+            help50Button.image = !newValue ? help50Image : noHelp50Image
+        }
+    }
+    var currentHelpTeam: Bool = true {
+        willSet {
+            helpTeamButton.image = !newValue ? helpTeamImage : noHelpTeamImage
+        }
+    }
+    var currentHelpPhone: Bool = true {
+        willSet {
+            helpPhoneButton.image = !newValue ? helpPhoneImage : noHelpPhoneImage
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(changeTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func changeTime() {
+        time -= 1
+        
+        if time == 0 {
+            time = 0
+            timer.invalidate()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -254,7 +300,12 @@ class AnswersView: UIView {
     private lazy var help50Button: CustomButtonHintView = {
         let help50Button = CustomButtonHintView()
         help50Button.translatesAutoresizingMaskIntoConstraints = false
-        help50Button.image = help50Image
+        if currentHelp50 {
+            help50Button.image = help50Image
+        }
+        else {
+            help50Button.image = noHelp50Image
+        }
         help50Button.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
         help50Button.button.tag = tagHelp50
         return help50Button
@@ -263,7 +314,11 @@ class AnswersView: UIView {
     private lazy var helpTeamButton: CustomButtonHintView = {
         let helpTeamButton = CustomButtonHintView()
         helpTeamButton.translatesAutoresizingMaskIntoConstraints = false
-        helpTeamButton.image = helpTeamImage
+        if currentHelpTeam {
+            helpTeamButton.image = helpTeamImage
+        } else {
+            helpTeamButton.image = noHelpTeamImage
+        }
         helpTeamButton.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
         helpTeamButton.button.tag = tagHelpTeam
         return helpTeamButton
@@ -272,7 +327,12 @@ class AnswersView: UIView {
     private lazy var helpPhoneButton: CustomButtonHintView = {
         let helpPhoneButton = CustomButtonHintView()
         helpPhoneButton.translatesAutoresizingMaskIntoConstraints = false
-        helpPhoneButton.image = helpPhoneImage
+        if currentHelpPhone {
+            helpPhoneButton.image = helpPhoneImage
+        }
+        else {
+            helpPhoneButton.image = helpPhoneImage
+        }
         helpPhoneButton.button.addTarget(self, action: #selector(changeImage), for: .touchDown)
         helpPhoneButton.button.tag = tagHelpPhone
         return helpPhoneButton
@@ -367,6 +427,9 @@ class AnswersView: UIView {
 
             questionNumberLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
             questionNumberLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 40),
+            
+            timerLabel.leftAnchor.constraint(equalTo: questionNumberLabel.rightAnchor, constant: 65),
+            timerLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
 
 
             questionPriceLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
@@ -402,3 +465,5 @@ private let noHelpPhoneImage = UIImage(named: "noHelpPhone")
 private let tagHelp50: Int = 1
 private let tagHelpTeam: Int = 2
 private let tagHelpPhone: Int = 3
+
+

@@ -1,9 +1,11 @@
 import UIKit
+import SwiftUI
 
 class ResultViewController: UIViewController {
     
-    let resultOfGame:Bool
+    let resultOfGame: Bool
     let numberOfAttempts: Int
+    let finalSum: Int
     
     private let logoImageView: UIImageView = {
         let image = UIImage(named: "logo")
@@ -11,6 +13,25 @@ class ResultViewController: UIViewController {
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    private lazy var finalSumLabel: UILabel = {
+        let label = UILabel()
+        if resultOfGame {
+            label.text = "Congratulations to the winner! \n The winning amount is \n \(finalSum) RUB"
+            label.numberOfLines = 3
+        }
+        else {
+            label.text = "Unfortunately you lost! \n Good luck next time! \n The winning amount is \n \(finalSum) RUB"
+            label.numberOfLines = 4
+        }
+        
+        
+        label.textColor = .yellow
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 30)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     private let resultLabel: UILabel = {
@@ -27,6 +48,7 @@ class ResultViewController: UIViewController {
         label.font = .systemFont(ofSize: 26)
         label.text = "You lost on 5 attempt"
         label.textAlignment = .center
+        label.textColor = .yellow
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -50,9 +72,10 @@ class ResultViewController: UIViewController {
         setUpBackgroundImage()
     }
     
-    init(result: Bool, numberOfAttempts: Int) {
+    init(result: Bool, numberOfAttempts: Int, finalSum: Int) {
         self.resultOfGame = result
         self.numberOfAttempts = numberOfAttempts
+        self.finalSum = finalSum
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -91,9 +114,19 @@ class ResultViewController: UIViewController {
                 resultLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
                 resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
+            view.addSubview(finalSumLabel)
+            NSLayoutConstraint.activate([
+                finalSumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 40),
+                finalSumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
         } else {
             view.addSubview(attemptLabel)
             view.addSubview(resultLabel)
+            view.addSubview(finalSumLabel)
+            NSLayoutConstraint.activate([
+                finalSumLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 40),
+                finalSumLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
             NSLayoutConstraint.activate([
                 attemptLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
                 attemptLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
@@ -114,7 +147,26 @@ class ResultViewController: UIViewController {
     }
                                     
     @objc private func didTapPlayAgain() {
-                
+        let startVC = GreetingsViewController()
+        startVC.modalPresentationStyle = .fullScreen
+        self.present(startVC, animated: true)
+    }
+}
+
+
+struct MyProvider2: PreviewProvider {
+    static var previews: some View {
+        ContainerView().edgesIgnoringSafeArea(.all)
+    }
+    
+    struct ContainerView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> some UIViewController {
+            return ResultViewController(result: false, numberOfAttempts: 10, finalSum: 1_000_000)
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+            
+        }
     }
 }
 

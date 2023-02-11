@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1158506C2993F8150019661F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158506B2993F8150019661F /* Player.swift */; };
-		1158506E2993F89A0019661F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158506D2993F89A0019661F /* Game.swift */; };
-		115850702993F9BD0019661F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1158506F2993F9BD0019661F /* Question.swift */; };
-		115850722993FADF0019661F /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115850712993FADF0019661F /* Hint.swift */; };
+		11252D422997F59A005955FA /* GreetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11252D402997F59A005955FA /* GreetingsViewController.swift */; };
+		11252D432997F59A005955FA /* SelectNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11252D412997F59A005955FA /* SelectNicknameViewController.swift */; };
+		11252D492997F5C0005955FA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11252D452997F5C0005955FA /* Game.swift */; };
+		11252D4A2997F5C0005955FA /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11252D462997F5C0005955FA /* Question.swift */; };
+		11252D4B2997F5C0005955FA /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11252D472997F5C0005955FA /* Hint.swift */; };
+		11252D4C2997F5C0005955FA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11252D482997F5C0005955FA /* Player.swift */; };
+		11252D4E2998000A005955FA /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11252D4D2998000A005955FA /* ResultViewController.swift */; };
+		11252D5329981292005955FA /* expectation_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11252D5029981292005955FA /* expectation_sound.mp3 */; };
+		11252D5429981292005955FA /* true_ans_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11252D5129981292005955FA /* true_ans_sound.mp3 */; };
+		11252D5529981292005955FA /* false_ans_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11252D5229981292005955FA /* false_ans_sound.mp3 */; };
+		11252D5729981575005955FA /* start_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11252D5629981574005955FA /* start_sound.mp3 */; };
 		11585076299418670019661F /* CustomButtonAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11585075299418670019661F /* CustomButtonAnswerView.swift */; };
 		11857EDA2991649700365F7F /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11857ED92991649700365F7F /* AnswersViewController.swift */; };
 		11857F0129917F5C00365F7F /* AnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11857F0029917F5C00365F7F /* AnswersView.swift */; };
-		11BEF0F8299662B80088B19E /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BEF0F6299662B70088B19E /* QuestionTableViewCell.swift */; };
-		11BEF0F9299662B80088B19E /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BEF0F7299662B80088B19E /* QuestionsViewController.swift */; };
 		11F37564299277290022E26F /* CustomButtonHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F37563299277290022E26F /* CustomButtonHintView.swift */; };
 		F53BD637299121030038DC2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD636299121030038DC2E /* AppDelegate.swift */; };
 		F53BD639299121030038DC2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD638299121030038DC2E /* SceneDelegate.swift */; };
@@ -24,21 +29,23 @@
 		F53BD643299121030038DC2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53BD641299121030038DC2E /* LaunchScreen.storyboard */; };
 		F5A77EFD29968F9800303CE4 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */; };
 		F5A77EFE29968F9800303CE4 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77EFC29968F9800303CE4 /* QuestionTableViewCell.swift */; };
-		F5A77F012996915A00303CE4 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77EFF2996915A00303CE4 /* SecondViewController.swift */; };
-		F5A77F022996915A00303CE4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77F002996915A00303CE4 /* FirstViewController.swift */; };
-		F5A77F04299691DC00303CE4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77F03299691DC00303CE4 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1158506B2993F8150019661F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		1158506D2993F89A0019661F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		1158506F2993F9BD0019661F /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
-		115850712993FADF0019661F /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
+		11252D402997F59A005955FA /* GreetingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GreetingsViewController.swift; path = MillionaireApp/Views/GreetingsViewController.swift; sourceTree = SOURCE_ROOT; };
+		11252D412997F59A005955FA /* SelectNicknameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectNicknameViewController.swift; path = MillionaireApp/Views/SelectNicknameViewController.swift; sourceTree = SOURCE_ROOT; };
+		11252D452997F5C0005955FA /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		11252D462997F5C0005955FA /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		11252D472997F5C0005955FA /* Hint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
+		11252D482997F5C0005955FA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		11252D4D2998000A005955FA /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		11252D5029981292005955FA /* expectation_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = expectation_sound.mp3; sourceTree = "<group>"; };
+		11252D5129981292005955FA /* true_ans_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = true_ans_sound.mp3; sourceTree = "<group>"; };
+		11252D5229981292005955FA /* false_ans_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = false_ans_sound.mp3; sourceTree = "<group>"; };
+		11252D5629981574005955FA /* start_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start_sound.mp3; sourceTree = "<group>"; };
 		11585075299418670019661F /* CustomButtonAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonAnswerView.swift; sourceTree = "<group>"; };
 		11857ED92991649700365F7F /* AnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
 		11857F0029917F5C00365F7F /* AnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersView.swift; sourceTree = "<group>"; };
-		11BEF0F6299662B70088B19E /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionTableViewCell.swift; path = MillionaireApp/Views/QuestionsModel/QuestionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		11BEF0F7299662B80088B19E /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionsViewController.swift; path = MillionaireApp/Views/QuestionsModel/QuestionsViewController.swift; sourceTree = SOURCE_ROOT; };
 		11F37563299277290022E26F /* CustomButtonHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonHintView.swift; sourceTree = "<group>"; };
 		F53BD633299121030038DC2E /* MillionaireApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MillionaireApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F53BD636299121030038DC2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,9 +56,6 @@
 		F53BD644299121030038DC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		F5A77EFC29968F9800303CE4 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
-		F5A77EFF2996915A00303CE4 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = MillionaireApp/Views/SecondViewController.swift; sourceTree = SOURCE_ROOT; };
-		F5A77F002996915A00303CE4 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = MillionaireApp/Views/FirstViewController.swift; sourceTree = SOURCE_ROOT; };
-		F5A77F03299691DC00303CE4 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = MillionaireApp/Views/ResultViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +69,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11252D442997F5C0005955FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11252D452997F5C0005955FA /* Game.swift */,
+				11252D462997F5C0005955FA /* Question.swift */,
+				11252D472997F5C0005955FA /* Hint.swift */,
+				11252D482997F5C0005955FA /* Player.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		11252D4F2998127B005955FA /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				11252D5629981574005955FA /* start_sound.mp3 */,
+				11252D5029981292005955FA /* expectation_sound.mp3 */,
+				11252D5229981292005955FA /* false_ans_sound.mp3 */,
+				11252D5129981292005955FA /* true_ans_sound.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		11857EDD299174BD00365F7F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				11BEF0F7299662B80088B19E /* QuestionsViewController.swift */,
-				11BEF0F6299662B70088B19E /* QuestionTableViewCell.swift */,
+				11252D4D2998000A005955FA /* ResultViewController.swift */,
+				11252D402997F59A005955FA /* GreetingsViewController.swift */,
+				11252D412997F59A005955FA /* SelectNicknameViewController.swift */,
 				F53BD63A299121030038DC2E /* StartViewController.swift */,
 				11857ED92991649700365F7F /* AnswersViewController.swift */,
-				F5A77F002996915A00303CE4 /* FirstViewController.swift */,
-				F5A77EFF2996915A00303CE4 /* SecondViewController.swift */,
 				F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */,
-				F5A77F03299691DC00303CE4 /* ResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -89,17 +113,6 @@
 				11585075299418670019661F /* CustomButtonAnswerView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		F50A643A29913B4600871433 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				1158506B2993F8150019661F /* Player.swift */,
-				1158506D2993F89A0019661F /* Game.swift */,
-				1158506F2993F9BD0019661F /* Question.swift */,
-				115850712993FADF0019661F /* Hint.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		F53BD62A299121020038DC2E = {
@@ -121,6 +134,8 @@
 		F53BD635299121030038DC2E /* MillionaireApp */ = {
 			isa = PBXGroup;
 			children = (
+				11252D4F2998127B005955FA /* Sounds */,
+				11252D442997F5C0005955FA /* Models */,
 				11857EDD299174BD00365F7F /* Controllers */,
 				F53BD636299121030038DC2E /* AppDelegate.swift */,
 				F53BD638299121030038DC2E /* SceneDelegate.swift */,
@@ -191,7 +206,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F53BD643299121030038DC2E /* LaunchScreen.storyboard in Resources */,
+				11252D5429981292005955FA /* true_ans_sound.mp3 in Resources */,
 				F53BD640299121030038DC2E /* Assets.xcassets in Resources */,
+				11252D5729981575005955FA /* start_sound.mp3 in Resources */,
+				11252D5329981292005955FA /* expectation_sound.mp3 in Resources */,
+				11252D5529981292005955FA /* false_ans_sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,23 +221,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				115850722993FADF0019661F /* Hint.swift in Sources */,
 				11857EDA2991649700365F7F /* AnswersViewController.swift in Sources */,
 				F5A77EFE29968F9800303CE4 /* QuestionTableViewCell.swift in Sources */,
+				11252D4A2997F5C0005955FA /* Question.swift in Sources */,
+				11252D4E2998000A005955FA /* ResultViewController.swift in Sources */,
+				11252D422997F59A005955FA /* GreetingsViewController.swift in Sources */,
 				F5A77EFD29968F9800303CE4 /* QuestionsViewController.swift in Sources */,
-				F5A77F012996915A00303CE4 /* SecondViewController.swift in Sources */,
+				11252D4B2997F5C0005955FA /* Hint.swift in Sources */,
 				F53BD63B299121030038DC2E /* StartViewController.swift in Sources */,
-				F5A77F022996915A00303CE4 /* FirstViewController.swift in Sources */,
 				F53BD637299121030038DC2E /* AppDelegate.swift in Sources */,
-				11BEF0F9299662B80088B19E /* QuestionsViewController.swift in Sources */,
-				115850702993F9BD0019661F /* Question.swift in Sources */,
 				11F37564299277290022E26F /* CustomButtonHintView.swift in Sources */,
-				1158506C2993F8150019661F /* Player.swift in Sources */,
 				F53BD639299121030038DC2E /* SceneDelegate.swift in Sources */,
+				11252D432997F59A005955FA /* SelectNicknameViewController.swift in Sources */,
 				11585076299418670019661F /* CustomButtonAnswerView.swift in Sources */,
-				11BEF0F8299662B80088B19E /* QuestionTableViewCell.swift in Sources */,
 				11857F0129917F5C00365F7F /* AnswersView.swift in Sources */,
-				1158506E2993F89A0019661F /* Game.swift in Sources */,
+				11252D4C2997F5C0005955FA /* Player.swift in Sources */,
+				11252D492997F5C0005955FA /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
