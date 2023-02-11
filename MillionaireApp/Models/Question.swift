@@ -98,6 +98,10 @@ struct QuestionModel {
         }
     }
     
+    func getAllQuestions() -> [QuestionModel.Question] {
+        return allQuestions
+    }
+    
     func getRandomQuestions(complexity: QuestionComplexity) -> [QuestionModel.Question] {
         var questions: [Question] = []
         switch complexity {

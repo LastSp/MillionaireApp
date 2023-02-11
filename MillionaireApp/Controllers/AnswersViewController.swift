@@ -6,6 +6,9 @@ class AnswersViewController: UIViewController {
     
     let answerView = AnswersView(frame: UIScreen.main.bounds)
     var gameModel = GameModel()
+    var currentNickname: String? = nil
+    var currentNumberQuestion: Int? = nil
+    var questionViewController: QuestionsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,46 +47,51 @@ class AnswersViewController: UIViewController {
     
     func startGame(nickname: String?, hints: [Hint]) {
         let player = Player(nickname: nickname)
-        let number = 1
         let game = gameModel.createGame(player: player, hints: hints)
-        nextQuestion(number: number, game: game)
-        
-        
+        nextQuestion(game: game)
     }
     
-    func nextQuestion(number: Int, game: GameModel.Game) {
-        let questionText = game.questions[number - 1].questionText
-        let questionAnswers = game.questions[number - 1].answers
-        let price = game.sumForQuestion[number]!
+    func toThePrevScreen(isTrue: Bool) {
+        questionViewController?.trueAns = isTrue
+        questionViewController?.currentNumberQuestion = currentNumberQuestion!
+        self.dismiss(animated: true)
+    }
+    
+    func nextQuestion(game: GameModel.Game) {
+        let questionText = game.questions[currentNumberQuestion! - 1].questionText
+        let questionAnswers = game.questions[currentNumberQuestion! - 1].answers
+        let price = game.sumForQuestion[currentNumberQuestion!]!
         answerView.setQuestions(title: questionText,
                                 answers: questionAnswers,
                                 price: price,
-                                number: number,
+                                number: currentNumberQuestion!,
                                 answerButtonCompletion: { [self] (ans, letter) in
             answerView.playerSelectButton(letter: letter)
             timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { [self] _ in
-                if gameModel.checkTrueAns(ans: ans, questionNumber: number) {
+                if gameModel.checkTrueAns(ans: ans, questionNumber: currentNumberQuestion!) {
                     answerView.setButtonImage(letter: letter, image: UIImage(named: "true_background")!)
                     timer.invalidate()
                     Timer.scheduledTimer(withTimeInterval: 5,
                                                  repeats: false, block: {[self] _ in
                         answerView.reloadAllButtons()
-                        nextQuestion(number: number + 1, game: game)
+                        currentNumberQuestion! += 1
+                        toThePrevScreen(isTrue: true)
+                        
                     })
                 }
                 else {
                     answerView.setButtonImage(letter: letter, image: UIImage(named: "false_background")!)
                     timer.invalidate()
-                    Timer.scheduledTimer(withTimeInterval: 5,
+                    Timer.scheduledTimer(withTimeInterval: 1,
                                                  repeats: false, block: {[self] _ in
-                        answerView.reloadAllButtons()
-                        nextQuestion(number: number + 1, game: game)
+                        currentNumberQuestion! += 1
+                        toThePrevScreen(isTrue: false)
                     })
                 }
             })
         },
                                 hintButtonCompletion: {[self] hintName in
-            gameModel.useHint(gameId: game.id, hintName: hintName, question: game.questions[number - 1])
+            gameModel.useHint(gameId: game.id, hintName: hintName, question: game.questions[currentNumberQuestion! - 1])
 
             
         })

@@ -49,7 +49,6 @@ class CustomButtonAnswerView: UIView {
     @objc func checkAns(sender: UIButton) {
         let currentAnswer = labelAnswer.text!
         let currentLetter = labelLetter.text!
-        print(currentAnswer)
         checkAnsCompletion?(currentAnswer, currentLetter)
     }
     

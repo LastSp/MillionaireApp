@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class GreetingsViewController: UIViewController {
     
@@ -14,17 +13,20 @@ class GreetingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         setupHierarchy()
         setupLayout()
-        
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
     }
     
 // MARK: - Outlets
     
-    private lazy var imageView: UIImageView = {
+    private lazy var backgroundImageView: UIImageView = {
+        let image = UIImage(named: "background")
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var logoImageView: UIImageView = {
         let image = UIImage(named: "logo")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
@@ -57,14 +59,13 @@ class GreetingsViewController: UIViewController {
         let button = UIButton(type: .system)
         
         let title = "Правила игры"
-        let attributedString = NSMutableAttributedString(string: title)
+        let myAttributed = [NSMutableAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 37)]
+        let attributedString = NSMutableAttributedString(string: title, attributes: myAttributed)
         attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: title.count))
         button.setAttributedTitle(attributedString, for: .normal)
-        
-        button.titleLabel?.font =  UIFont(name: "Roboto", size: 32)
         button.setTitleColor(UIColor(named: "buttonTitleColor"), for: .normal)
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -73,14 +74,15 @@ class GreetingsViewController: UIViewController {
         let button = UIButton(type: .system)
         
         let title = "Начать игру"
-        let attributedString = NSMutableAttributedString(string: title)
+        let myAttributed = [NSMutableAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 37)]
+        let attributedString = NSMutableAttributedString(string: title, attributes: myAttributed)
         attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: title.count))
         button.setAttributedTitle(attributedString, for: .normal)
         
-        button.titleLabel?.font =  UIFont(name: "Roboto", size: 32)
+        button.titleLabel?.font =  UIFont(name: "Roboto", size: 52)
         button.setTitleColor(UIColor(named: "buttonTitleColor"), for: .normal)
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startGameButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -89,7 +91,8 @@ class GreetingsViewController: UIViewController {
     // MARK: - Setup
     
     private func setupHierarchy() {
-        view.addSubview(imageView)
+        view.addSubview(backgroundImageView)
+        view.addSubview(logoImageView)
         view.addSubview(label1)
         view.addSubview(label2)
         view.addSubview(button1)
@@ -98,20 +101,26 @@ class GreetingsViewController: UIViewController {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 95),
-        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -95),
-        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+        logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+        logoImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 95),
+        logoImageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -95),
+        logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
         
-        label1.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 17),
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        backgroundImageView.leftAnchor.constraint(equalTo: view.leftAnchor),
+        backgroundImageView.rightAnchor.constraint(equalTo: view.rightAnchor),
+        
+        
+        label1.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 17),
         label1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        
+
         label2.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 9),
         label2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
         button1.bottomAnchor.constraint(equalTo: button2.topAnchor, constant: -40),
         button1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        
+
         button2.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40),
         button2.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:-80),
         button2.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -120,26 +129,12 @@ class GreetingsViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func buttonPressed() {
-        
+    @objc private func startGameButton() {
+        let selectNicknameVC = SelectNicknameViewController()
+        selectNicknameVC.modalPresentationStyle = .fullScreen
+        self.present(selectNicknameVC, animated: true)
     }
 
-}
-
-struct MyProvider1: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return GreetingsViewController()
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
 }
 
 

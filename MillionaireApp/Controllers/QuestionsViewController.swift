@@ -8,7 +8,19 @@
 import Foundation
 import UIKit
 
+
 class QuestionsViewController: UIViewController {
+    
+    var currentNickname: String? = nil
+    var questions = QuestionModel().getAllQuestions()
+    var curentIndexPath: Int = 1
+    var currentNumberQuestion: Int = 1 {
+        willSet {
+            updateBackgroundCell(currentIndex: newValue, userIsTrue: trueAns!)
+            goToNextQuestion()
+        }
+    }
+    var trueAns: Bool? = nil
 
     //MARK: - Properties
     private let tableView: UITableView = {
@@ -26,15 +38,27 @@ class QuestionsViewController: UIViewController {
         return imageView
     }()
     
+    func goToNextQuestion() {
+        Timer.scheduledTimer(withTimeInterval: 5,
+                                     repeats: false, block: {[self] _ in
+            let answerVC = AnswersViewController()
+            answerVC.currentNickname = currentNickname
+            answerVC.modalPresentationStyle = .fullScreen
+            answerVC.questionViewController = self
+            answerVC.currentNumberQuestion = currentNumberQuestion
+            self.present(answerVC, animated: true)
+        })
+    }
+    
     //MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
         setUpBackgroundImage()
         setUpViews()
+        goToNextQuestion()
+        
     }
-
-    
     //MARK: - Functions
     
     private func setUpTableView() {
@@ -43,6 +67,8 @@ class QuestionsViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.isScrollEnabled = false
         tableView.separatorColor = .clear
+        tableView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        tableView.allowsSelection = false
     }
     
     private func setUpBackgroundImage() {
@@ -72,17 +98,37 @@ class QuestionsViewController: UIViewController {
     
 }
 
-
 //MARK: - UITableViewDelegate, UITableViewDataSource
 extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableViewCell.identifier, for: indexPath) as? QuestionTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.selectionStyle = .default
+        cell.configure(currentNumberQuestion: "\(self.curentIndexPath)",
+                       currentPriceQuestion: "\(sumsForQuestions[self.curentIndexPath]!)")
+        self.curentIndexPath += 1
+        cell.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = view.backgroundColor
+        return headerView
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 15
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableViewCell.identifier, for: indexPath)
-        cell.selectionStyle = .none
-        return cell
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -90,6 +136,11 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
+    func updateBackgroundCell(currentIndex: Int, userIsTrue: Bool) {
+        let cell = tableView.cellForRow(at: IndexPath(item: 0, section: currentIndex - 2)) as? QuestionTableViewCell
+        cell?.changeBackground(isTrue: userIsTrue)
     }
     
 }

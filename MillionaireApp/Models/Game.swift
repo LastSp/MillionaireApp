@@ -115,7 +115,7 @@ struct GameModel {
     }
 }
 
-private(set) var sumsForQuestions: [Int: Int] = [
+var sumsForQuestions: [Int: Int] = [
     1: 1_00,
     2: 2_00,
     3: 3_00,

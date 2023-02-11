@@ -13,21 +13,27 @@ class QuestionTableViewCell: UITableViewCell {
     
     static let identifier = "QuestionTableViewCell"
     
-    let questionNumberLabel: UILabel = {
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "pink_background"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var questionNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "Вопрос 10"
+        label.text = ""
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 20)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let prizeNumberLabel: UILabel = {
+    private lazy var prizeNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "500000 RUB"
+        label.text = ""
         label.textAlignment = .right
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 20)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -54,7 +60,7 @@ class QuestionTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0))
-        applyGradients()
+        //applyGradients()
 
     }
     
@@ -64,6 +70,15 @@ class QuestionTableViewCell: UITableViewCell {
         backgroundColor = .clear
         contentView.layer.cornerRadius = 15
         layer.masksToBounds = true
+        self.contentMode = .center
+        contentView.addSubview(backgroundImageView)
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            backgroundImageView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            backgroundImageView.rightAnchor.constraint(equalTo: self.rightAnchor),
+        ])
+        
         contentView.addSubview(questionNumberLabel)
         
         NSLayoutConstraint.activate([
@@ -77,6 +92,8 @@ class QuestionTableViewCell: UITableViewCell {
             prizeNumberLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15),
             prizeNumberLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+        
+        
     }
     
     
@@ -94,5 +111,27 @@ class QuestionTableViewCell: UITableViewCell {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
+    func configure(currentNumberQuestion: String, currentPriceQuestion: String) {
+        
+        questionNumberLabel.text = "Вопрос \(currentNumberQuestion)"
+        prizeNumberLabel.text = "\(currentPriceQuestion) RUB"
+        if currentNumberQuestion == "5" || currentNumberQuestion == "10" {
+            backgroundImageView.image = UIImage(named: "normal_background")
+        }
+        if currentNumberQuestion == "15" {
+            backgroundImageView.image = UIImage(named: "yellow_background")
+            prizeNumberLabel.text = "1 Миллион"
+        }
+        setNeedsLayout()
+    }
+    
+    func changeBackground(isTrue: Bool) {
+        if isTrue {
+            backgroundImageView.image = UIImage(named: "true_background")
+        }
+        else {
+            backgroundImageView.image = UIImage(named: "false_background")
+        }
+    }
     
 }
