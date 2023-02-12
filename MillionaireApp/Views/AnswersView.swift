@@ -224,16 +224,20 @@ class AnswersView: UIView {
     func playerSelectButton(letter: String) {
         hideHelpButton()
         if buttonA.labelLetter.text! == letter {
+            buttonA.isUserInteractionEnabled = false
             hideButton(buttons: [buttonD, buttonB, buttonC])
         }
         else if buttonB.labelLetter.text! == letter {
+            buttonB.isUserInteractionEnabled = false
             hideButton(buttons: [buttonD, buttonA, buttonC])
         }
         else if buttonC.labelLetter.text! == letter {
+            buttonC.isUserInteractionEnabled = false
             hideButton(buttons: [buttonD, buttonB, buttonA])
             
         }
         else if buttonD.labelLetter.text! == letter {
+            buttonD.isUserInteractionEnabled = false
             hideButton(buttons: [buttonA, buttonB, buttonC])
         }
     }
