@@ -57,7 +57,7 @@ class GreetingsViewController: UIViewController {
     
     private lazy var button1: UIButton = {
         let button = UIButton(type: .system)
-        
+
         let title = "Правила игры"
         let myAttributed = [NSMutableAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 37)]
         let attributedString = NSMutableAttributedString(string: title, attributes: myAttributed)
@@ -95,7 +95,7 @@ class GreetingsViewController: UIViewController {
         view.addSubview(logoImageView)
         view.addSubview(label1)
         view.addSubview(label2)
-        view.addSubview(button1)
+        //view.addSubview(button1)
         view.addSubview(button2)
     }
     
@@ -118,10 +118,10 @@ class GreetingsViewController: UIViewController {
         label2.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 9),
         label2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-        button1.bottomAnchor.constraint(equalTo: button2.topAnchor, constant: -40),
-        button1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//        button1.bottomAnchor.constraint(equalTo: button2.topAnchor, constant: -40),
+//        button1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-        button2.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40),
+//        button2.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40),
         button2.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:-80),
         button2.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
