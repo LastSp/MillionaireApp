@@ -24,7 +24,6 @@
 		11F37564299277290022E26F /* CustomButtonHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F37563299277290022E26F /* CustomButtonHintView.swift */; };
 		F53BD637299121030038DC2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD636299121030038DC2E /* AppDelegate.swift */; };
 		F53BD639299121030038DC2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD638299121030038DC2E /* SceneDelegate.swift */; };
-		F53BD63B299121030038DC2E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BD63A299121030038DC2E /* StartViewController.swift */; };
 		F53BD640299121030038DC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F53BD63F299121030038DC2E /* Assets.xcassets */; };
 		F53BD643299121030038DC2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53BD641299121030038DC2E /* LaunchScreen.storyboard */; };
 		F5A77EFD29968F9800303CE4 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */; };
@@ -50,7 +49,6 @@
 		F53BD633299121030038DC2E /* MillionaireApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MillionaireApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F53BD636299121030038DC2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F53BD638299121030038DC2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F53BD63A299121030038DC2E /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		F53BD63F299121030038DC2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F53BD642299121030038DC2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F53BD644299121030038DC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 				11252D4D2998000A005955FA /* ResultViewController.swift */,
 				11252D402997F59A005955FA /* GreetingsViewController.swift */,
 				11252D412997F59A005955FA /* SelectNicknameViewController.swift */,
-				F53BD63A299121030038DC2E /* StartViewController.swift */,
 				11857ED92991649700365F7F /* AnswersViewController.swift */,
 				F5A77EFB29968F9800303CE4 /* QuestionsViewController.swift */,
 			);
@@ -228,7 +225,6 @@
 				11252D422997F59A005955FA /* GreetingsViewController.swift in Sources */,
 				F5A77EFD29968F9800303CE4 /* QuestionsViewController.swift in Sources */,
 				11252D4B2997F5C0005955FA /* Hint.swift in Sources */,
-				F53BD63B299121030038DC2E /* StartViewController.swift in Sources */,
 				F53BD637299121030038DC2E /* AppDelegate.swift in Sources */,
 				11F37564299277290022E26F /* CustomButtonHintView.swift in Sources */,
 				F53BD639299121030038DC2E /* SceneDelegate.swift in Sources */,
